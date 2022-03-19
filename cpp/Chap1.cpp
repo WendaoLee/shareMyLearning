@@ -60,6 +60,7 @@ void show_referenceOfFunctionArguments(const int x[])
     // x[0] = 300; //
 }
 
+//Easy way of showing the results above
 void test_show_referenceOfFunc()
 {
     std::vector<double> test_referOfFuncArg ={1.1,2.2,3.3};
@@ -72,8 +73,57 @@ void test_show_referenceOfFunc()
     std::cout << a[0] << std::endl;
 }
 
-int main()
+//The example in the 1.7.1
+/*
+This function counts how many specified chars given in the char-array——Also recognized as string.
+Example:
+count("Hello",'h')
+YOU MUST noticed: If a pointer points to an array——in our example,it is "Hello",it stored in the continuous memory address.And p++ means it points to next character's stored address.
+REVIEW:*p operates the address's mapping content,p operates the address.
+
+[NOTICE]In the example,the reasons why '++p' == 'char[i],++i' is the type char only takes one byte in the memory.
+*/
+int count_x(const char* p,char x)
 {
-    int a[3] = {1,2,3};
+    //nullptr could eliminate potential confusion between integers(0 or NULL) and pointers.
+    if (p == nullptr)
+    {
+        return 0;
+    }
+
+    int count = 0;
+
+    while (*p)
+    {
+        if (*p == x)
+        {
+            ++count;
+        }
+        ++p;
+        
+    }
+    
+    return count;
     
 }
+
+//With breakpoint in debug,you can observe the pointer's interest
+void show_pointer_assign()
+{
+    int x = 2;
+    int y = 3;
+    int *p = &x;
+    int *q = &y;
+    // p = q;
+    // *p = q; //ERROR because of type unmatching.
+    *p = *q; 
+}
+
+
+int main()
+{
+    
+    
+}
+
+//informal essay:int& r = x——That means r reference to x; 
