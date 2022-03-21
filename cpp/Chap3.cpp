@@ -13,9 +13,12 @@ But it should be:
 Without the link of Vector.o,it will cause undefined reference error.This is what the book not mentioned.
 
 
-You can visit the https://hackingcpp.com/cpp/lang/separate_compilation.html to get details.I also saved its content in the folder 'Chap3' as 'cpp_separate_compilation_16.svg'.
+You can visit the https://hackingcpp.com/cpp/lang/separate_compilation.html to get details.
+I also saved its content in the folder 'Chap3' as 'C++ Separate Compilation Introduction _ hacking C++.pdf'.
 
-[Short Notes]I guess I should learn more about g++ and the config of VSCode
+[Short Notes]I guess I should learn more about g++ and the config of VSCode.
+[Short Notes]Learing here,I start learning makefile.Maybe CMake is also a interesting thing?
+[Short Notes]I think I should write a doc to summarize what I have learned.CPP,so complicated but fascinating.
 */
 
 #include <iostream>
@@ -25,8 +28,9 @@ You can visit the https://hackingcpp.com/cpp/lang/separate_compilation.html to g
     According to Google's style guide book,the header files would avoid using UNIX's convenient folder (such as './' '../')
     So we define the header file 'Vector.h' mentioned in the book as 'Chap3/Vector.h'
 */
-// #include "Chap3/Vector.h"
-import "Chap3/Vector.cpp/Vector"
+
+#include "Chap3/Vector.h"
+// import "Chap3/Vector.cpp/Vector"
 
 double sqrt_sum(Vector& v)
 {
