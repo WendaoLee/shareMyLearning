@@ -60,6 +60,7 @@ void show_referenceOfFunctionArguments(const int x[])
     // x[0] = 300; //
 }
 
+
 //Easy way of showing the results above
 void test_show_referenceOfFunc()
 {
@@ -122,7 +123,9 @@ void show_pointer_assign()
 
 int main()
 {
-    
+    int x[3] = {1,2,3};
+    show_referenceOfFunctionArguments(x,3);
+    std::cout << x[0] << std::endl;
     
 }
 
