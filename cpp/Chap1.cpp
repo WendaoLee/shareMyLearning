@@ -26,7 +26,7 @@ void show_reference()
     And the x exactly gets _for_begin,which means change x is equals to change v[.]'s value.
     Besides,one array's address is continuous.For instance,0x24309ffba0-0x24309ffbb8.
 
-    (?)'Reference to' == '*p = xxxxxxxx'
+    
     */
     for (auto &x : v)
     {
@@ -36,7 +36,8 @@ void show_reference()
     }
 }
 
-/*The reference in the function's arguments will point to origin data,which means you won't take copy's costs.
+/*
+The reference in the function's arguments will point to origin data,which means you won't take copy's costs.
 By default,the array as arguments will all be reference.
 Below the first is the book's example
 */

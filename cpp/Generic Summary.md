@@ -29,7 +29,7 @@ The **advice** listed at the end of chapter is useful and valuable.I take down s
 
 The differences between Pointer and Reference are:
 
-1. No null reference but have null pointer.
+1. No null reference but exists null pointer.
 2. When reference created,it unswervingly follow its target object.But the pointer can change.
 3. Reference should be initialized when declared.
 
