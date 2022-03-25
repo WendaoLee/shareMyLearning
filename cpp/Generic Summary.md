@@ -41,7 +41,7 @@ The differences between Pointer and Reference are:
 
 **Please remember** : Pass an array as arguments to function is created a reference in the function's scope.
 
-For Instance:
+For instance:
 
 ```c++
 int k[3] = {1,2,3};
