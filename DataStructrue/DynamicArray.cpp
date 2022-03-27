@@ -1,4 +1,19 @@
 #include <iostream>
+// DynamicArray,and other Cpp files in this folder are practices of MIT6.006.I try to achieve the concept mentioned in the class,just out of interesting,whether it is useful.
+
+/*
+    Because I just used A Tour of C++ as my C++ learning guidebook.So in the origin commit of this file,I coded this as index of the pointer to array:
+
+    *p = new int[size]; //it points to p[0]
+    *p +=4; //I coded like this to index p[1];
+
+    It is dangerous,because not every compiler or runtime-eviroment will allocate truly 4bytes to a interger.
+    It can be passed through compiling.But it may cause some unexpected erorrs.For instance,'delete' operator.
+
+    The correct way is used as normal array:
+      p[1]
+      p[2]
+*/
 
 /*
   Dynamic Array:
@@ -34,8 +49,8 @@ public:
     void output();
 
 private:
-    int array_size;
-    int array_max;
+    int array_size; // array_size is to point out the what is the (be used)end---With minus 1.
+    int array_max;  // array_max is to point out the array's truly end(no matter if valued)
     int *array;
 };
 
@@ -51,74 +66,49 @@ DynamicArray::DynamicArray(const int x[], int size)
     array_max = 2 * size;
 
     array = new int[array_max];
-    int *p = array;
     for (int i = 0; i < array_size; i++)
     {
-        *p = x[i];
-        p += 4; // Interger occurs 4 bytes.
+        array[i] = x[i];
     }
 };
 
 int DynamicArray::get_at(int i)
 {
-    int *p = array;
-    if (i == 0)
-    {
-        return *p;
-    }
-    else
-    {
-        p += 4 * i;
-        return *p;
-    }
+    return array[i];
 }
 
 bool DynamicArray::set_at(int i, int value)
 {
-    /*
-    p points to the ARRAY.
-    */
-    int *p = array;
 
     if (i >= array_max)
     {
         array_max = array_max * 2;
-        array = new int[array_max];
+        int *temp = new int[array_max]; // temp contains new array
 
-        // define temp pointer to operate new array
-        int *temp = array;
-
-        // Copy old value to new array.
+        // Copy old values to new array.
         for (int i = 0; i < array_size; i++)
         {
-            *temp = *p;
-            p += 4;
-            temp += 4;
+            temp[i] = array[i];
         }
 
-        p-= 4*array_size;
+        delete[] array; // delete old array
 
-        delete[] p; // delete old array
+        array = temp; // point to new array
 
-        int *p = array;
-        p += i * 4; // Make p points to target place.
-
-        *p = value;
+        array[i] = value;
         array_size = i + 1;
 
         return true;
     }
     else if (i > array_size)
     {
-        p += i * 4;
-        *p = value;
+        array[i] = value;
         array_size = i + 1;
         return true;
     }
     else
     {
-        p += i * 4;
-        *p = value;
+        array[i] = value;
         return true;
     }
     return false;
@@ -126,42 +116,59 @@ bool DynamicArray::set_at(int i, int value)
 
 bool DynamicArray::insert_first(int value)
 {
-    //p operates old array
-    int *p = array;
-    
-
-    array = new int[array_size + 1];
-    array_size+=1;
-
-    //temp operates new array
-    int *temp = array;
-    *temp = value; //set the first
-    temp+=4;
-
-    /*
-      Copy old values.
-      The loops were controled by new array_size,so it minus 1,or it will point a unknow address.
-    */
-    for (int i = 0; i < array_size - 1; i++)
+    int *temp = new int[array_max];
+    for (int i = 0; i < array_size; i++)
     {
-        *temp = *p;
-        p += 4;
-        temp += 4;
+        temp[i + 1] = array[i];
     }
 
-    delete[] p;
+    temp[0] = value;
 
-    return true;
+    delete[] array;
+    array = temp;
 };
+
+bool DynamicArray::delete_first()
+{
+    int *temp = new int[array_max];
+    for (int i = 0; i < array_size; i++)
+    {
+        temp[i] = array[i + 1];
+    }
+
+    delete[] array;
+    array = temp;
+}
+
+bool DynamicArray::insert_last(int value)
+{
+    if (array_size >= array_max)
+    {
+        set_at(array_size - 1,value);
+    }
+    else{
+        array[array_size - 1] = value;
+    }
+    
+}
+
+bool DynamicArray::delete_last()
+{
+    array[array_size - 1] = NULL;
+}
+
+bool DynamicArray::insert_at(int i,int value)
+{
+    
+}
 
 void DynamicArray::output()
 {
     {
         int *p = array;
-        for (int i = 0; i < array_size; i++)
+        for (int i = 0; i <= array_size; i++)
         {
-            std::cout << *p << std::endl;
-            p += 4;
+            std::cout << p[i] << std::endl;
         }
     }
 }
@@ -170,5 +177,6 @@ int main()
 {
     int x[] = {1, 2, 3, 4, 5, 6};
     DynamicArray v(x, 6);
-    v.set_at(30,999);
+    v.set_at(30, 999);
+    v.output();
 }
