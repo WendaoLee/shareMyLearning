@@ -32,7 +32,7 @@ I also saved its content in the folder 'Chap3' as 'C++ Separate Compilation Intr
 #include "Chap3/Vector.h"
 // import "Chap3/Vector.cpp/Vector"
 
-double sqrt_sum(Vector& v)
+double sqrt_sum(Vector& v
 {
     double sum = 0;
     for (int i = 0; i != v.size(); i++)

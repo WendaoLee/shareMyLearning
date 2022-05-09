@@ -68,9 +68,15 @@ void reference()
     // int**view_p = &p;
 }
 
+class test{
+    public:
+      int a;
+      int b;
+};
+
 int main()
 {
-    int *array = new int[9];
-    *array = 1;
-    
+   test a[10];
+   a[0].a = 5;
+   std::cout << a[0].a;
 }

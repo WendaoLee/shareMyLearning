@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
 
-
-
 void show_pointer() // function of show what is pointer and basic use of it
 {
     int v[5] = {0, 1, 2, 3, 4};

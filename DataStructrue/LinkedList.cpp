@@ -121,8 +121,5 @@ void LinkedList::delete_first()
 
 int main()
 {
-    LinkedList test;
-    test.build(5);
-    test.set_at(3,10);
-    std::cout << test.get_at(0);
+    LinkedList temp;
 }
