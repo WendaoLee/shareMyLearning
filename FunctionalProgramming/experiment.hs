@@ -54,10 +54,6 @@ safeDiv :: Double -> Double -> FailableDouble
 safeDiv _ 0 = Failure
 safeDiv x y = OK (x / y)
 
-test::FailableDouble -> Double
-test Failure =  0
-test (OK d) = d
-
 hailstone :: Integer -> Integer
 hailstone n
   | n `mod` 2 == 0 = n `div` 2
@@ -66,3 +62,12 @@ hailstone n
 hailstoneSeq :: Integer -> [Integer]
 hailstoneSeq 1 = [1]
 hailstoneSeq n = n : hailstoneSeq (hailstone n)
+
+y :: Integer -> Integer
+y n = n + 1
+
+g::Integer -> Integer
+g n = n*n
+
+test::Integer -> Integer
+test a = (y.g)a
