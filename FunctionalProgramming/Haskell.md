@@ -1,5 +1,14 @@
 # Haskell
 
+## Essays
+
+`(*)` (f.g)x == f(g(x))
+
+`$` f  \$ g \$ h \$ x = f \$ (g \$ (h $ x))
+
+> 也许，两者结合起来写能够极大地提高可读性。
+
+
 ## Language Basic Notes
 
 - Functors:函子。
