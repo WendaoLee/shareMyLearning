@@ -32,8 +32,12 @@ validate a
     | otherwise = False
     where calSum = sumDigits . doubleEveryOther.toDigits
 
--- type Peg = String
--- type Move = (Peg, Peg)
--- hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
--- @todo Tomorrow
+type Peg = String
+type Move = (Peg, Peg)
+hanoi::Integer -> Peg -> Peg ->Peg -> [Move]
+hanoi n src goal tmp
+  | n <= 0    = []
+  | n == 1    = [(src, goal)]
+  | otherwise = hanoi (n-1) src tmp goal ++ hanoi 1 src goal tmp
+                ++ hanoi (n-1) tmp goal src
 
