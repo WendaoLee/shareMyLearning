@@ -2,6 +2,27 @@
 
 > 随便记一点学习过程中的心情或想法碎片吧。
 
+## 2022.6.24
+
+JavaScript是真的有点好玩。只是可惜它原生没有枚举类型。要实现只能这样玩：
+
+```javascript
+const EnumName = {
+    Item:"xxx"
+}
+```
+
+我现在在考虑是否可以这样子实现类型约束：
+
+```javascript
+const TypeConstraint = {
+    KeyName:Number
+    ...
+}
+```
+
+不过试了一下不是特别好用。之后再说吧。
+
 ## 2022.6.23
 
 增删改查真的无聊。
