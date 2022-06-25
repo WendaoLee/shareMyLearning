@@ -2,7 +2,7 @@ lucky :: (Integral a) => a -> String
 lucky x = case x of
   7 -> "test the polymorphic"
   x -> "sorry"
--- t
+
 -- lucky :: (Integral a) => a -> String
 -- lucky 7 ="test the polymorphic"
 -- lucky x = "sorry"
