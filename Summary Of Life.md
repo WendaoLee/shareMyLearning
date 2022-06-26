@@ -4,6 +4,10 @@
 
 ## 2022.6.26
 
+### 1.关于写Javascript时个人觉得好玩的写法
+
+> 昨日之后续。
+
 最后我使用这个方案进行映射与约束。
 
 一个是表单的实际键与代码键名的映射：
@@ -82,6 +86,14 @@ getClearedFormObject() {
             return ob
 }
 ```
+
+### 2.琐屑
+
+> 1.Difference between assignment and definition
+>
+> [assignment]:`assign` means `give sb sth`.
+>
+> [definition]:`define` means `give meaning to sth`
 
 ## 2022.6.24
 
