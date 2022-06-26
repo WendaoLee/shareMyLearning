@@ -2,6 +2,87 @@
 
 > 随便记一点学习过程中的心情或想法碎片吧。
 
+## 2022.6.26
+
+最后我使用这个方案进行映射与约束。
+
+一个是表单的实际键与代码键名的映射：
+
+```javascript
+//这是植株及产出表的键名映射
+export const theYIELDSAMPLE = {
+    ID:"id",
+    Comment:"bz" //备注
+}
+```
+
+而后是约束函数枚举：
+
+```javascript
+/**
+ * 通用类型检查枚举函数。
+ */
+const ConstraintFunction = {
+    checkNumber:function(a){
+        if(isNaN(Number(a))){
+            return 0
+        }
+        return Number(a)
+    },
+    checkDate:function(a){
+        if(isNaN(Date.parse(a))){
+            return new Date()
+        }
+        return a
+    },
+}
+```
+
+最后业务代码中，导入的是键类型约束类`TYPEConstraint`和键名映射（如`theYIELDSAMPLE`）。`TYPEConstraint`如下：
+
+```java
+/*
+简单的举例
+*/
+export const TYPEConstraint = {
+    ID:ConstraintFunction.checkNumber,
+    BeginDetectDate:ConstraintFunction.checkDate,
+
+    //个别特殊的约束直接在枚举对象中写了
+    DetectYear:function(a){
+        if(isNaN(Date.parse(a))){
+            return String(new Date().getFullYear())
+        }
+        return String(new Date(a).getFullYear())
+    },
+    WaterCategory:function(a){
+        let theEnum = ["降雨","灌溉"]
+        theEnum.includes(a)?null:a="降雨"
+        return a
+    },
+    Runoff:function(a){
+        let theEnum = ["是","否"]
+        theEnum.includes(a)?null:a="否"
+        return a
+    }
+}
+```
+
+我目前只是把它拿来当作默认值的设置来用的:
+
+```javascript
+/*
+返回一个默认的数据管理对象
+*/
+getClearedFormObject() {
+            let ob = {}
+            for (const key in theUSER) {
+                TYPEConstraint.hasOwnProperty(key) ? ob[theUSER[key]] = TYPEConstraint[key]() : ob[theUSER[key]] = ''
+            }
+            return ob
+}
+```
+
 ## 2022.6.24
 
 JavaScript是真的有点好玩。只是可惜它原生没有枚举类型。要实现只能这样玩：
