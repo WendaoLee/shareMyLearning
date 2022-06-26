@@ -2,7 +2,7 @@ lucky :: (Integral a) => a -> String
 lucky x = case x of
   7 -> "test the polymorphic"
   x -> "sorry"
-
+-- no harm to the file
 -- lucky :: (Integral a) => a -> String
 -- lucky 7 ="test the polymorphic"
 -- lucky x = "sorry"
@@ -71,3 +71,16 @@ g n = n*n
 
 test::Integer -> Integer
 test a = (y.g)a
+
+data Thing = Shoe 
+           | Ship 
+           | SealingWax 
+           | Cabbage 
+           | King
+  deriving Show
+
+data Person = Person String Int Thing
+  deriving Show
+
+baz :: Person -> String
+baz p@(Person n _ _) = "The name field of (" ++ show p ++ ") is " ++ n
