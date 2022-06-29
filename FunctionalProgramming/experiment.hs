@@ -84,3 +84,11 @@ data Person = Person String Int Thing
 
 baz :: Person -> String
 baz p@(Person n _ _) = "The name field of (" ++ show p ++ ") is " ++ n
+
+biggestInt, smallestInt :: Int
+biggestInt  = maxBound
+smallestInt = minBound
+
+-- For the 01-intro's question,in chapter `Defining basic functions`,"This works, but it is much too complicated. Can you see why?"
+isEven :: Integer -> Bool
+isEven n = n `mod` 2 == 0

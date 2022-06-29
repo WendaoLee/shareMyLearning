@@ -8,6 +8,16 @@
 
 离谱。
 
+### 1.随手笔记
+
+In haskell:
+
+> ```
+> otherwise` is just an convenient synonym for `True
+> 
+> We can see that [2,3,4] notation is just convenient shorthand for 2 : 3 : 4 : []. Note also that these are really singly linked lists, NOT arrays.
+> ```
+
 ## 2022.6.27
 
 > 草稿 
