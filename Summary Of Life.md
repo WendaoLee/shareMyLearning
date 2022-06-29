@@ -2,6 +2,17 @@
 
 > 随便记一点学习过程中的心情或想法碎片吧。
 
+## 2022.6.29
+
+真会有人用vuex保存那些必要信息吗？
+
+离谱。
+
+## 2022.6.27
+
+> 草稿 
+>
+
 ## 2022.6.26
 
 ### 1.关于写Javascript时个人觉得好玩的写法
@@ -94,6 +105,8 @@ getClearedFormObject() {
 > [assignment]:`assign` means `give sb sth`.
 >
 > [definition]:`define` means `give meaning to sth`
+>
+> In Haskell: `x = 4` should not be read as “`x` gets `4`” or “assign `4` to `x`”, but as “`x` is *defined to be* `4`”.
 
 ## 2022.6.24
 
