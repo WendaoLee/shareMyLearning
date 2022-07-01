@@ -2,6 +2,22 @@
 
 > 随便记一点学习过程中的心情或想法碎片吧。
 
+## 2022.6.30
+
+### 1.笔记
+
+```haskell
+-- 'data Person':Type Constructor
+-- '.. = Person ...':Data Constructor
+-- Two 'Person',different namespaces and different things.
+data Person = Person String Int Thing
+  deriving Show
+```
+
+> type and data constructor names must always start with a capital letter; variables (including names of functions) must always start with a lowercase letter.
+>
+> In fact, the syntax for defining functions we have seen is really just convenient syntax sugar for defining a `case` expression.
+
 ## 2022.6.29
 
 真会有人用vuex保存那些必要信息吗？
