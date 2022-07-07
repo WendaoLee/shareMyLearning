@@ -2,6 +2,29 @@
 
 > 随便记一点学习过程中的心情或想法碎片吧。
 
+## 2022.7.7
+
+今天看Vue Cli UI部分的源码，突然发现三目表达式返回值可以这么写：
+
+```javascript
+function defaultValue (provided, value) {
+  return provided == null ? value : provided //牛逼，一直忘了还有这种写法。
+}
+```
+
+比较好玩的类函数式写法：
+
+```javascript
+function autoCall (fn, ...context) {
+  if (typeof fn === 'function') {
+    return fn(...context)
+  }
+  return fn
+}
+```
+
+
+
 ## 2022.7.4
 
 重新捡起了数学。
