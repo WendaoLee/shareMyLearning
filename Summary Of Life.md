@@ -2,6 +2,68 @@
 
 > 随便记一点学习过程中的心情或想法碎片吧。
 
+## 2022.7.22
+
+### 1 strawberry的modularity可参考写法
+
+```python
+# 在module中
+
+def resolver():
+    return results
+
+class TypeSystem:
+    name:str
+    age:int
+
+@strawberry.type
+class ExportFactory:
+    TypeSystem:type = strawberry.field(resolver=resolver)
+```
+
+而后在入口Query处:
+
+```python
+# schema.py
+
+def resolver_generate(strawberry_type: type):
+    def resolver() -> strawberry_type:
+        return strawberry_type()
+    return resolver
+
+@strawberry.type
+class Query:
+    type:type = strawberry.field(resolver=resolver_generate(ExportFactory))
+```
+
+如果想要传递参数，那么则需要使用`@strawberry.field`进行注释。如
+
+```python
+# 在module中
+"""
+resolver和resolver_args在解释后的代码上并没有实际上的不同。
+此处@strawberry.field是把它处理为resolver，等同于strawberry.field(resolver=resolver_arg)
+"""
+@strawberry.field
+def resolver_args(argname:type):
+    return withArgResult
+
+def resolver():
+    return results
+
+@straberry.type
+class TypeSystem:
+    name:str
+    age:int
+
+@strawberry.type
+class ExportFactory:
+    TypeSystem:TypeSystem = strawberry.field(resolver=resolver)
+    Arg:type = resolver_args
+```
+
+
+
 ## 2022.7.16
 
 太痛苦了。
